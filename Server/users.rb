@@ -25,7 +25,7 @@ class Users
         end
     end
 
-    def register(user)
+    def register(socket)
         username = get_user_info(socket)
         user = User.new(username, socket)
         user.welcome_from(self)

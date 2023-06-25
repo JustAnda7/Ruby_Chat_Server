@@ -1,5 +1,6 @@
 require 'socket'
 require './users'
+require './user'
 
 server = TCPServer.new(40000)
 
@@ -10,11 +11,11 @@ users = Users.new
 while true
     tcp_socket = server.accept
     Thread.new(tcp_socket) do |socket|
-        member = members.register(socket)
+        user = users.register(socket)
         begin
-            members.start_listening_to(member)
+            users.start_listening_to(user)
         rescue EOFError
-            members.disconnect(member)            
+            users.disconnect(user)            
         end
     end
 end
