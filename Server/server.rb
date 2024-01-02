@@ -15,7 +15,7 @@ while true
         begin
             users.start_listening_to(user)
         rescue EOFError
-            users.disconnect(user)            
+            users.disconnect(user)
         end
     end
 end

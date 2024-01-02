@@ -8,7 +8,7 @@ class Users
     def each
         @users.each { |user| yield user}
     end
-    
+
     def add(user)
         @users << user
     end
@@ -18,7 +18,7 @@ class Users
     end
 
     def broadcast(message, sender)
-        receivers = @users - [sender]
+        receivers = @users
         receivers.each do |receiver|
             receiver.socket.print "#{sender.username}: #{message}"
             receiver.newline_prompt
